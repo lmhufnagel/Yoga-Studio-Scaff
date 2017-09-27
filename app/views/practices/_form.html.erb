@@ -1,0 +1,47 @@
+<%= form_with(model: practice, local: true) do |form| %>
+  <% if practice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(practice.errors.count, "error") %> prohibited this practice from being saved:</h2>
+
+      <ul>
+      <% practice.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :practice_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :teacher %>
+    <%= form.select :teacher_id, options_for_select(Teacher.all.map {|teach| [teach.name, teach.id]}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :style %>
+    <%= form.text_field :style, id: :practice_style %>
+  </div>
+
+  <div class="field">
+    <%= form.label :length %>
+    <%= form.number_field :length, id: :practice_length %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date, id: :practice_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time %>
+    <%= form.time_select :time, id: :practice_time %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,27 @@
+<%= form_with(model: sign_up, local: true) do |form| %>
+  <% if sign_up.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sign_up.errors.count, "error") %> prohibited this sign_up from being saved:</h2>
+
+      <ul>
+      <% sign_up.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :class_id %>
+    <%= form.number_field :class_id, id: :sign_up_class_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :student_id %>
+    <%= form.number_field :student_id, id: :sign_up_student_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
